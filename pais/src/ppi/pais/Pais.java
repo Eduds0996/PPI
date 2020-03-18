@@ -22,10 +22,12 @@ public class Pais {
 		setArea(area);
 	}
 	
+	
 	public Pais() {
 		
 	}
 	
+
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,12 +38,12 @@ public class Pais {
 	
 	public Connection obtemConexao() throws SQLException {
 		return DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/pais", "root", "senha123");
+				.getConnection("jdbc:mysql://localhost:3306/pais?user=root&password=senha123&useTimezone=true&serverTimezone=UTC");
 	}
 	
 	
 	public void criar() {
-		String sqlInsert = "INSERT INTO cliente(nome, populacao, area) VALUES (?, ?, ?)";
+		String sqlInsert = "INSERT INTO pais(nome, populacao, area) VALUES (?, ?, ?)";
 		 
 		try (Connection conn = obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
@@ -65,7 +67,7 @@ public class Pais {
 	}
 	
 	public void atualizar() {
-		String sqlUpdate = "UPDATE cliente SET nome=?, fone=?, email=? WHERE id=?";
+		String sqlUpdate = "UPDATE pais SET nome=?, populacao=?, area=? WHERE id=?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
@@ -80,7 +82,7 @@ public class Pais {
 	}
 
 	public void excluir() {
-		String sqlDelete = "DELETE FROM cliente WHERE id = ?";
+		String sqlDelete = "DELETE FROM pais WHERE id = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
@@ -92,7 +94,7 @@ public class Pais {
 	}
 
 	public void carregar() {
-		String sqlSelect = "SELECT nome, fone, email FROM cliente WHERE cliente.id = ?";
+		String sqlSelect = "SELECT * FROM pais WHERE pais.id = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -238,5 +240,6 @@ public class Pais {
 	public String toString() {
 		return "id: " + getId() + "| Nome: " + getNome() + " | Populacao: " + getPopulacao() + " | Area: " + getArea();
 	}
+	
 	
 }
