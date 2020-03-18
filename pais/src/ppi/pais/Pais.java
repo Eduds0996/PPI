@@ -28,7 +28,7 @@ public class Pais {
 	
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		}
@@ -36,7 +36,7 @@ public class Pais {
 	
 	public Connection obtemConexao() throws SQLException {
 		return DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/loja-virtual\",\"root\",\"senha123\"");
+				.getConnection("jdbc:mysql://localhost:3306/pais", "root", "senha123");
 	}
 	
 	

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-class PaisTest {
+ public class PaisTest {
 	Pais pais, copia;
 	static int id = 0;
 	
@@ -66,15 +66,15 @@ class PaisTest {
 	}
 	
 	@Test
-	void testMaiorPopulacao() {
+	public void testMaiorPopulacao() {
 		pais.getMaiorpop();
 		assertEquals("Testa Maior população", "China", pais.getMaiorpop());
 		
 	}
 
 	@Test
-	void testMenorArea() {
+	public void testMenorArea() {
 		pais.getMenorarea();
-		assertEquals("Testa menor Area: ", "Japão", pais.getMenorarea());
+		assertEquals("Testa menor Area: ", "Italia", pais.getMenorarea());
 	}
 }
