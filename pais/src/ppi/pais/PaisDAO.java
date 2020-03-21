@@ -134,23 +134,22 @@ public class PaisDAO {
 		return pais;
 	}
 	
-	public ArrayList<Pais> Vetor() {
-		ArrayList<Pais> pais = new ArrayList<>();
-		String select = "select * from pais";
-		
-		
+	public static Pais[] Vetor() {
+		Pais pais = null;
+		Pais[] vetor = new Pais[4];
+		int count = 0;
+		String sqlSelect = "SELECT id, nome, populacao, area FROM pais limit 4";
+		// usando o try with resources do Java 7, quefecha o queabriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(select);) {
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 			try (ResultSet rs = stm.executeQuery();) {
-				for(int  i = 1 ; i<=3 ; i++) {
-					if (rs.next()) {
-						Pais lista = new Pais();
-						lista.setId(rs.getInt("id"));
-						lista.setNome(rs.getString("nome"));
-						lista.setArea(rs.getDouble("area"));
-						lista.setPopulacao(rs.getLong("populacao"));
-						pais.add(lista);
-					} 
+				while (rs.next()) {
+					Integer id = rs.getInt("id");
+					String nome = rs.getString("nome");
+					Long populacao = rs.getLong("populacao");
+					Double area = rs.getDouble("area");
+					pais = new Pais(id, nome, populacao, area);
+					vetor[count++] = pais;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -158,10 +157,6 @@ public class PaisDAO {
 		} catch (SQLException e1) {
 			System.out.print(e1.getStackTrace());
 		}
-		return pais;
-	}
-	
-	public String toString(Pais pais) {
-		return "id: " + pais.getId() + "| Nome: " + pais.getNome() + " | Populacao: " + pais.getPopulacao() + " | Area: " + pais.getArea();
+		return vetor;
 	}
 }

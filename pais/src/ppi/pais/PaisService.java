@@ -27,4 +27,8 @@ public class PaisService {
 	public Pais MenorArea() {
 		return dao.MenorArea();
 	}
+	
+	public Pais[] Vetor() {
+		return dao.Vetor();
+	}
 }

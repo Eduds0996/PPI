@@ -89,5 +89,12 @@ import org.junit.runners.MethodSorters;
 		System.out.println(paisService.MenorArea());
 	}
 	
-	
+	@Test
+	public void testVetor() {
+		System.out.println("3 vetores: ");
+		Pais[] vet = paisService.Vetor();
+		for (Pais pais : vet) {
+			System.out.println(pais);
+		}
+	}
 }
