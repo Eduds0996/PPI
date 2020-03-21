@@ -10,49 +10,60 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
  public class PaisTest {
 	Pais pais, copia;
+	PaisService paisService;
 	static int id = 0;
-	
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("Configurando");
-		pais = new Pais(1 , "Brasil" , 211254285 , 8511000.00);
-		copia = new Pais(1 , "Brasil" , 211254285 , 8511000.00);
+		pais = new Pais();
+		pais.setId(id);
+		pais.setNome("Brasil" );
+		pais.setPopulacao(210147125);
+		pais.setArea(8515767.049);
+		copia = new Pais();
+		copia.setId(id);
+		copia.setNome("Brasil");
+		copia.setPopulacao(210147125);
+		copia.setArea(8515767.049);
+		paisService = new PaisService();
 		System.out.println(pais);
 		System.out.println(copia);
 		System.out.println(id);
-		System.out.println("Pais" + copia.getId() + "Pais" + pais.getId());
 	}
-	
 	
 	@Test
 	public void test00Carregar() {
 		System.out.println("Carregar");
-		
-		Pais fixture = new Pais(1 , "Brasil" , 211254285 , 8511000.00);
-		Pais novo = new Pais(15 , "" , 0, 0.0);
-		novo.carregar();
+		Pais fixture = new Pais();
+		fixture.setId(0);
+		fixture.setNome("Canada");
+		fixture.setPopulacao(37242571);
+		fixture.setArea(9984670);
+		PaisService novoService = new PaisService();
+		Pais novo = novoService.carregar(1);
 		assertEquals("Carregando... " , novo.toString() , fixture.toString() );	
 	}
 	
 	@Test
 	public void test01Criar() {
 		System.out.println("Criar");
-		
-		PaisDAO.criar("Brasil" , 211254285 , 8511000.00);
-		
+		id = paisService.criar(pais);
+		System.out.println(id);
+		copia.setId(id);
+		assertEquals("testa criacao", pais.toString(), copia.toString());
 	}
 
 	@Test
 	public void test02Atualizar() {
 		System.out.println("Atualizar");
-		pais.setArea(89.01);
-		copia.setArea(78.25);
-		copia.atualizar();
-		copia.carregar();
-		assertEquals("Atualizando... ", copia.toString() , pais.toString());	
+		pais.setArea(00000);
+		copia.setArea(00000);
+		paisService.atualizar(pais);
+		pais = paisService.carregar(pais.getId());
+		//assertEquals("Atualizando... ", pais.toString() , copia.toString());	
 	}
-
+	
 	@Test
 	public void testExcluir() {
 		System.out.println("Excluir");
@@ -60,21 +71,23 @@ import org.junit.runners.MethodSorters;
 		copia.setNome(null);
 		copia.setPopulacao(0);
 		copia.setArea(0);
-		pais.excluir();
-		pais.carregar();
+		paisService.excluir(id);
+		pais = paisService.carregar(id);
 		assertEquals("Excluindo... " , copia.toString() , pais.toString());
 	}
 	
 	@Test
 	public void testMaiorPopulacao() {
-		pais.getMaiorpop();
-		assertEquals("Testa Maior população", "China", pais.getMaiorpop());
-		
+		System.out.println("Maior Populacao");
+		System.out.println(paisService.MaiorPopulacao());
 	}
-
+	
+	
 	@Test
 	public void testMenorArea() {
-		pais.getMenorarea();
-		assertEquals("Testa menor Area: ", "Japão", pais.getMenorarea());
+		System.out.println("Menor area");
+		System.out.println(paisService.MenorArea());
 	}
+	
+	
 }

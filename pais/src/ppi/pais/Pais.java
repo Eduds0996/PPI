@@ -3,6 +3,7 @@ package ppi.pais;
 import java.io.Serializable;
 
 public class Pais implements Serializable {
+	
 	private int id;
 	private String nome;
 	private long populacao;
@@ -71,5 +72,11 @@ public class Pais implements Serializable {
 
 	public void setMenorarea(String pais) {
 		this.menorarea = pais;
+	}
+	
+	@Override
+	public String toString() {
+		return "Pais [id=" + id + ", nome=" + nome + ", populacao=" + populacao + ", area=" + area + ", maiorpop="
+				+ maiorpop + ", menorarea=" + menorarea + "]";
 	}
 }

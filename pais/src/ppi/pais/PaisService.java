@@ -3,16 +3,16 @@ package ppi.pais;
 public class PaisService {
 	PaisDAO dao = new PaisDAO();
 
-	public void criar(Pais pais) {
-		dao.criar(pais);
+	public int criar(Pais pais) {
+		return dao.criar(pais);
 	}
 
 	public void atualizar(Pais pais){
 		dao.atualizar(pais);
 	}
 
-	public void excluir(Pais pais){
-		dao.excluir(pais);
+	public void excluir(int id){
+		dao.excluir(id);
 	}
 
 	public Pais carregar(int id){
@@ -24,8 +24,7 @@ public class PaisService {
 		return dao.Maiorpopulacao();
 	}
 	
-	public Pais MarioArea() {
+	public Pais MenorArea() {
 		return dao.MenorArea();
 	}
-	
 }

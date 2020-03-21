@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaisDAO {	
-	public void criar(Pais pais) {
+	public int criar(Pais pais) {
 		String sqlInsert = "INSERT  INTO pais(nome, populacao, area) VALUES (?, ?, ?)";
 		 
 		try (Connection conn = ConnectionFactory.obtemConexao();
@@ -28,7 +28,8 @@ public class PaisDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
+		return pais.getId();
 	}
 	
 	public void atualizar(Pais pais) {
@@ -46,12 +47,12 @@ public class PaisDAO {
 		}
 	}
 
-	public void excluir(Pais pais) {
+	public void excluir(int id) {
 		String sqlDelete = "DELETE FROM pais WHERE id = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlDelete);) {
-			stm.setInt(1, pais.getId());
+			stm.setInt(1, id);
 			stm.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
