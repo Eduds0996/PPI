@@ -62,11 +62,12 @@ public class PaisDAO {
 
 	public Pais carregar(int id) {
 		Pais pais = new Pais();
-		String sqlSelect = "SELECT * FROM pais WHERE pais.id = ?";
+		pais.setId(id);
+		String sqlSelect = "SELECT nome, populacao, area FROM pais WHERE pais.id = ?";
 		// usando o try with resources do Java 7, que fecha o que abriu
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-			stm.setInt(1, id);
+			stm.setInt(1, pais.getId());
 			try (ResultSet rs = stm.executeQuery();) {
 				if (rs.next()) {
 					pais.setNome(rs.getString("nome"));

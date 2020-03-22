@@ -76,7 +76,6 @@ public class Pais implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Pais [id=" + id + ", nome=" + nome + ", populacao=" + populacao + ", area=" + area + ", maiorpop="
-				+ maiorpop + ", menorarea=" + menorarea + "]";
+		return "Pais [id=" + id + ", nome=" + nome + ", populacao=" + populacao + ", area=" + area +  "]";
 	}
 }
