@@ -44,12 +44,12 @@ public class PaisTest {
 		fixture.setId(1);
 		fixture.setNome("Canada");
 		fixture.setPopulacao(37242571);
-		fixture.setArea(9984670);
+		fixture.setArea(9984670.0);
 		PaisService novoService = new PaisService();
 		Pais novo = novoService.carregar(1);
 		System.out.println("-----------------------------------");
 		System.out.println(novoService.carregar(1));
-		//assertEquals("Carregando... " , novo.toString() , fixture );	
+		assertEquals("Carregando... " , novo , fixture );	
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class PaisTest {
 		copia.setArea(9999999);
 		paisService.atualizar(pais);
 		pais = paisService.carregar(pais.getId());
-		//assertEquals("Atualizando... ", pais , copia);	
+		assertEquals("Atualizando... ", pais , copia);	
 	}
 	
 	@Test

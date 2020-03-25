@@ -112,7 +112,7 @@ public class PaisDAO {
 		return pais;
 	}
 	
-	@SuppressWarnings({"rawtypes" , "uncheked"})
+
 	public Pais MenorArea() {
 		String menor = "select * from pais order by area asc limit 1";
 		Pais pais = new Pais();

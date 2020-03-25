@@ -3,13 +3,10 @@ package paisModel;
 import java.io.Serializable;
 
 public class Pais implements Serializable {
-	
 	private int id;
 	private String nome;
 	private long populacao;
 	private double area;
-	private String maiorpop;
-	private String menorarea;
 	
 	
 	public Pais(int id, String nome, long populacao, double area ) {
@@ -55,23 +52,40 @@ public class Pais implements Serializable {
 		this.area = area;
 	}
 	
-	public String getMaiorpop() {
-		return maiorpop;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(area);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + id;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + (int) (populacao ^ (populacao >>> 32));
+		return result;
 	}
 
-
-	public void setMaiorpop(String pais) {
-		this.maiorpop = pais;
-	}
-
-
-	public String getMenorarea() {
-		return menorarea;
-	}
-
-
-	public void setMenorarea(String pais) {
-		this.menorarea = pais;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pais other = (Pais) obj;
+		if (Double.doubleToLongBits(area) != Double.doubleToLongBits(other.area))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (populacao != other.populacao)
+			return false;
+		return true;
 	}
 	
 	@Override
