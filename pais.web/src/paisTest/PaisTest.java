@@ -60,18 +60,6 @@ public class PaisTest {
 		copia.setId(id);
 		assertEquals("testa criacao", pais.toString(), copia.toString());
 	}
-
-	/*
-	 * @Test
-	public void test02Atualizar() {
-		System.out.println("atualizar");
-		cliente.setFone("999999");
-		copia.setFone("999999");		
-		clienteService.atualizar(cliente);
-		cliente = clienteService.carregar(cliente.getId());
-		assertEquals("testa atualizacao", cliente, copia);
-	}
-	 */
 	
 	@Test
 	public void test02Atualizar() {
