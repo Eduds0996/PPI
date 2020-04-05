@@ -42,7 +42,7 @@ import org.junit.runners.MethodSorters;
 		fixture.setArea(9984670);
 		PaisService novoService = new PaisService();
 		Pais novo = novoService.carregar(1);
-		assertEquals("Carregando... " , novo.toString() , fixture.toString() );	
+		assertEquals("Carregando... " , novo , fixture );	
 	}
 	
 	@Test

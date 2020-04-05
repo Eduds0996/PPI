@@ -1,18 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="paisModel.Pais" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pais</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualizar País</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-	<h3>O seu cliente acaba de ser cadastrado</h3>
-	<%Pais pais = (Pais)request.getAttribute("Pais"); %>
-	Id: <%=pais.getId() %><br>
-	Nome: <%=pais.getNome() %><br>
-	Fone: <%=pais.getPopulacao() %><br>
-	E-mail: <%=pais.getArea() %><br>
+    <%Pais pais=( Pais)request.getAttribute( "Pais"); %>
+        <!-- Barra superior com os menus de navegação -->
+
+        <!-- Container Principal -->
+        <div id="main" class="container">
+            <h3 class="page-header">Visualizar Pais #<%=pais.getId() %></h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>Nome</strong>
+                    </p>
+                    <p>
+                        <%=pais.getNome() %>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>População</strong>
+                    </p>
+                    <p>
+                        <%=pais.getPopulacao() %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Área</strong>
+                    </p>
+                    <p>
+                        <%=pais.getArea() %>
+                    </p>
+                </div>
+            </div>
+            <hr />
+            <div id="actions" class="row">
+                <div class="col-md-12">
+                    <a href="index.html" class="btn btn-default">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>

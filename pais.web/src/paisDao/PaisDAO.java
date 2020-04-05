@@ -88,7 +88,7 @@ public class PaisDAO {
 		return pais;
 	}
 	
-	@SuppressWarnings({"rawtypes" , "uncheked"})
+	
 	public Pais Maiorpopulacao() {
 		String maior = "select * from pais order by populacao desc limit 1";
 		Pais pais = new Pais();
