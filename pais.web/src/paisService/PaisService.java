@@ -34,6 +34,6 @@ public class PaisService {
 	}
 	
 	public Pais[] Vetor() {
-		return dao.Vetor();
+		return PaisDAO.Vetor();
 	}
 }
