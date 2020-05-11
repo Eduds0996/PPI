@@ -27,9 +27,9 @@
         					Deseja realmente exlcuir este Pais?
         				</div>
         				<div class="modal-footer">
-        					<form action="Pais.do" method="post">
+        					<form action="controller.do" method="post">
         						<input type="hidden" name="id" id="id_excluir" />
-        						<button type="submit" class="btn btn-primary" name="acao" value="Excluir">Sim</button>
+        						<button type="submit" class="btn btn-primary" name="paisCommand" value="ExcluirPais">Sim</button>
         						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button> <!--Entender o que e essa variavel  -->
         					</form>
         				</div>
@@ -41,7 +41,7 @@
         	<c:import url="Menu.jsp"/>
         	<!-- Container Principal -->
         	<div id="main" class="container">
-        		<form action="listar_paises.do" method="post">
+        		<form action="controller.do" method="post">
         			<div id="top" class="row">
         				<div class="col-md-3">
         					<h2>Paises</h2>
@@ -51,7 +51,7 @@
         					<div class="input-group h2">
         						<input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Paises (deixe vazio para trazer todos)">
         						<span class="input-group-btn">
-        						<button class="btn btn-primary" type="submit" name="acao" value="buscar">
+        						<button class="btn btn-primary" type="submit" name="paisCommand" value="ListarPaisesBusca">
         						<span class="glyphicon glyphicon-search"></span>
         						</button>
         						</span>
@@ -94,8 +94,8 @@
 	       								${pais.area}
 	       							</td>
 	       							<td class="actions">
-	       								<a class="btn btn-success btn-xs" href="Pais.do?acao=Visualizar&id=${pais.id}">Visualizar</a>
-	       								<a class="btn btn-warning btn-xs" href="Pais.do?acao=Editar&id=${pais.id}">Editar</a>
+	       								<a class="btn btn-success btn-xs" href="controller.do?paisCommand=VisualizarPais&id=${pais.id}">Visualizar</a>
+	       								<a class="btn btn-warning btn-xs" href="controller.do?paisCommand=EditarPais&id=${pais.id}">Editar</a>
 	       								<button id="btn${pais.id}%>" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-pais="${pais.id}">Excluir</button>
 	       							</td>
 	       						</tr>		

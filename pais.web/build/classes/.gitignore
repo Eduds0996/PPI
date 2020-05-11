@@ -1,2 +1,6 @@
+/paisModel/
+/paisService/
+/paisTest/
+/paisCommand/
 /paisController/
-/paisDao/
+/command/
