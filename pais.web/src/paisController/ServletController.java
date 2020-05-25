@@ -26,13 +26,14 @@
 	
 				logRequest = new FileWriter(new File("C:\\Users\\Eduardo/logreq.log"),true);
 				request.setCharacterEncoding("UTF-8");
-				logRequest.append("\n" +Calendar.getInstance().getTime() +" Chegou um request para: " +request.getParameter("command") + "\n");
+				logRequest.append("\n" +Calendar.getInstance().getTime() +" Chegou um request para: " +request.getParameter("paisCommand") + "\n");
 				logRequest.flush();
-	
+				if(request.getParameter("paisCommand")!= null ) {
 				//System.out.println(Calendar.getInstance().getTime() +" Chegou um request para: " +request.getParameter("command"));
 				@SuppressWarnings("deprecation")
 				Command comando = (Command)Class.forName("paisCommand."+request.getParameter("paisCommand")).newInstance();
 				comando.executar(request, response);
+				}
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException e) {
 				e.printStackTrace();
